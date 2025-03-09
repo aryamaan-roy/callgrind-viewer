@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QHelpCollectionProject version="1.0">
     <assistant>
-        <title>Simple Text Viewer</title>
+        <title>Call Grind Viewer</title>
         <applicationIcon>images/handbook.png</applicationIcon>
-        <cacheDirectory>QtProject/simpletextviewer</cacheDirectory>
-        <startPage>qthelp://org.qt-project.examples.simpletextviewer/doc/index.html</startPage>
+        <cacheDirectory>QtProject/callgrindviewer</cacheDirectory>
+        <startPage>qthelp://org.qt-project.examples.callgrindviewer/doc/index.html</startPage>
         <aboutMenuText>
-            <text>About Simple Text Viewer</text>
+            <text>About Call Grind Viewer</text>
         </aboutMenuText>
         <aboutDialog>
             <file>about.txt</file>
@@ -19,12 +19,12 @@
     <docFiles>
         <generate>
             <file>
-                <input>simpletextviewer.qhp</input>
-                <output>simpletextviewer.qch</output>
+                <input>callgrindviewer.qhp</input>
+                <output>callgrindviewer.qch</output>
             </file>
         </generate>
         <register>
-            <file>simpletextviewer.qch</file>
+            <file>callgrindviewer.qch</file>
         </register>
     </docFiles>
 </QHelpCollectionProject>

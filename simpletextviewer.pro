@@ -12,7 +12,7 @@ DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 QT += widgets
 
-target.path = $$[QT_INSTALL_EXAMPLES]/assistant/simpletextviewer
+target.path = $$[QT_INSTALL_EXAMPLES]/assistant/callgrindviewer
 docs.files += $$PWD/documentation
 docs.path = $$target.path
 

@@ -30,7 +30,7 @@ void Assistant::showDocumentation(const QString &page)
         return;
 
     QByteArray ba("SetSource ");
-    ba.append("qthelp://org.qt-project.examples.simpletextviewer/doc/");
+    ba.append("qthelp://org.qt-project.examples.callgrindviewer/doc/");
 
     m_process->write(ba + page.toLocal8Bit() + '\n');
 }
@@ -79,7 +79,7 @@ bool Assistant::startAssistant()
         }
 
         const QStringList args{"-collectionFile"_L1,
-                               collectionDirectory + "/simpletextviewer.qhc"_L1,
+                               collectionDirectory + "/callgrindviewer.qhc"_L1,
                                "-enableRemoteControl"_L1};
 
         m_process->start(app, args);
@@ -96,7 +96,7 @@ bool Assistant::startAssistant()
 
 void Assistant::showError(const QString &message)
 {
-    QMessageBox::critical(QApplication::activeWindow(), tr("Simple Text Viewer"), message);
+    QMessageBox::critical(QApplication::activeWindow(), tr("Call Grind Viewer"), message);
 }
 
 void Assistant::finished(int exitCode, QProcess::ExitStatus status)

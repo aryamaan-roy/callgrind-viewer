@@ -22,13 +22,13 @@ MainWindow::MainWindow()
 {
     // ![0]
     textViewer->setContents(QLibraryInfo::path(QLibraryInfo::ExamplesPath)
-                            + "/assistant/simpletextviewer/documentation/intro.html"_L1);
+                            + "/assistant/callgrindviewer/documentation/intro.html"_L1);
     setCentralWidget(textViewer);
 
     createActions();
     createMenus();
 
-    setWindowTitle(tr("Simple Text Viewer"));
+    setWindowTitle(tr("Call Grind Viewer"));
     resize(750, 400);
 
     connect(textViewer, &TextEdit::fileNameChanged, this, &MainWindow::updateWindowTitle);
@@ -45,12 +45,12 @@ void MainWindow::closeEvent(QCloseEvent *)
 
 void MainWindow::updateWindowTitle(const QString &fileName)
 {
-    setWindowTitle(tr("Simple Text Viewer - %1").arg(fileName));
+    setWindowTitle(tr("Call Grind Viewer - %1").arg(fileName));
 }
 
 void MainWindow::about()
 {
-    QMessageBox::about(this, tr("About Simple Text Viewer"),
+    QMessageBox::about(this, tr("About Call Grind Viewer"),
                        tr("This example demonstrates how to use\n"
                           "Qt Assistant as help system for your\n"
                           "own application."));
