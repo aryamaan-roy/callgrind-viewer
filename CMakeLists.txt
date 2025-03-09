@@ -1,33 +1,44 @@
+# Copyright (C) 2022 The Qt Company Ltd.
+# SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
+
 cmake_minimum_required(VERSION 3.16)
+project(simpletextviewer LANGUAGES CXX)
 
-project(callgrind-viewer LANGUAGES CXX)
-
-set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core LinguistTools)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core LinguistTools)
-
-set(TS_FILES callgrind-viewer_en_DE.ts)
-
-add_executable(callgrind-viewer
-  main.cpp
-  ${TS_FILES}
-)
-target_link_libraries(callgrind-viewer Qt${QT_VERSION_MAJOR}::Core)
-
-if(COMMAND qt_create_translation)
-    qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
-else()
-    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+if(NOT DEFINED INSTALL_EXAMPLESDIR)
+    set(INSTALL_EXAMPLESDIR "examples")
 endif()
 
-include(GNUInstallDirs)
-install(TARGETS callgrind-viewer
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+set(INSTALL_EXAMPLEDIR "${INSTALL_EXAMPLESDIR}/assistant/simpletextviewer")
+
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+
+qt_add_executable(simpletextviewer
+    assistant.cpp assistant.h
+    findfiledialog.cpp findfiledialog.h
+    main.cpp
+    mainwindow.cpp mainwindow.h
+    textedit.cpp textedit.h
+)
+
+set_target_properties(simpletextviewer PROPERTIES
+    WIN32_EXECUTABLE TRUE
+    MACOSX_BUNDLE TRUE
+)
+
+target_compile_definitions(simpletextviewer PUBLIC
+    SRCDIR="${CMAKE_CURRENT_SOURCE_DIR}/"
+)
+
+target_link_libraries(simpletextviewer PUBLIC
+    Qt::Core
+    Qt::Gui
+    Qt::Widgets
+)
+
+install(TARGETS simpletextviewer
+    RUNTIME DESTINATION "${INSTALL_EXAMPLEDIR}"
+    BUNDLE DESTINATION "${INSTALL_EXAMPLEDIR}"
+    LIBRARY DESTINATION "${INSTALL_EXAMPLEDIR}"
 )
