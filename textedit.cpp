@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
 #include "textedit.h"
-
 #include <QFile>
 #include <QFileInfo>
+#include "callgrindhighlighter.h"
 
 TextEdit::TextEdit(QWidget *parent)
     : QTextEdit(parent)
@@ -21,8 +21,13 @@ void TextEdit::setContents(const QString &fileName)
         const QString data(QString::fromUtf8(file.readAll()));
         if (fileName.endsWith(".html"))
             setHtml(data);
-        else
+        else {
             setPlainText(data);
+            // Check for callgrind file
+            if (data.contains("# callgrind format")) {
+                new CallgrindHighlighter(document());
+            }
+        }
     }
     emit fileNameChanged(fileName);
 }

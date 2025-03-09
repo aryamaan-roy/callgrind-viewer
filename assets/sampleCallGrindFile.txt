@@ -1,0 +1,52 @@
+# callgrind format
+version: 1
+creator: MyProfileGenerator v1.0
+cmd: ./myapp --test
+desc: Complex profile test file with comprehensive callgrind outputs
+events: Cycles Instructions Flops
+positions: instr line
+summary: 5000 4000 2000
+
+# --- Define file mappings (name compression) ---
+fl=(1) file1.c
+fl=(2) file2.c
+
+# --- Define function mappings (name compression) ---
+fn=(1) main
+fn=(2) helper
+fn=(3) compute
+
+# --- Profile Data for 'main' function in file1.c ---
+fl=(1)
+fn=(1) main
+0x40010000 15 100 500 25
++0x10 +0 20 10 5
+
+# Association: main calls 'helper' (in the same file)
+cfn=(2) helper
+calls=2 75
+0x40010020 10 60 300 30
+
+# Association: main calls 'compute' (located in file2.c)
+cfi=(2) file2.c
+cfn=(3) compute
+calls=1 25
+0x40010030 8 40 200 15
+
+# Additional cost for 'main' (demonstrating multiple cost lines for summing)
+fn=(1)
++0x05 +2 5 25 3
+
+# Additional Association: main calls 'helper' again with relative cost line
+cfn=(2) helper
+calls=1 30
++0x08 +1 6 35 2
+
+# --- Profile Data for 'helper' function (in file1.c) ---
+fn=(2) helper
+0x40010040 20 80 400 20
+
+# --- Profile Data for 'compute' function (in file2.c) ---
+fl=(2)
+fn=(3) compute
+0x40010050 30 120 600 30

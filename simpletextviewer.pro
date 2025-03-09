@@ -1,8 +1,10 @@
 HEADERS       = mainwindow.h \
+                callgrindhighlighter.h \
                 findfiledialog.h \
                 assistant.h \
                 textedit.h
 SOURCES       = main.cpp \
+                callgrindhighlighter.cpp \
                 mainwindow.cpp \
                 findfiledialog.cpp \
                 assistant.cpp \
