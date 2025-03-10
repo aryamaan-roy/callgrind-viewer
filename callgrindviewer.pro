@@ -2,9 +2,11 @@ HEADERS       = mainwindow.h \
                 callgrindhighlighter.h \
                 findfiledialog.h \
                 assistant.h \
+                linenumbering.h \
                 textedit.h
 SOURCES       = main.cpp \
                 callgrindhighlighter.cpp \
+                linenumbering.cpp \
                 mainwindow.cpp \
                 findfiledialog.cpp \
                 assistant.cpp \

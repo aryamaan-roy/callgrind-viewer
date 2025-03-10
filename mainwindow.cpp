@@ -51,9 +51,8 @@ void MainWindow::updateWindowTitle(const QString &fileName)
 void MainWindow::about()
 {
     QMessageBox::about(this, tr("About Call Grind Viewer"),
-                       tr("This example demonstrates how to use\n"
-                          "Qt Assistant as help system for your\n"
-                          "own application."));
+                       tr("A lightweight Qt-based\n"
+                          "text viewer for Callgrind files"));
 }
 
 //! [3]
@@ -83,7 +82,7 @@ void MainWindow::createActions()
 
     clearAct = new QAction(tr("&Clear"), this);
     clearAct->setShortcut(tr("Ctrl+C"));
-    connect(clearAct, &QAction::triggered, textViewer, &QTextEdit::clear);
+    connect(clearAct, &QAction::triggered, textViewer, &QPlainTextEdit::clear);
 
     exitAct = new QAction(tr("E&xit"), this);
     exitAct->setShortcuts(QKeySequence::Quit);
