@@ -17,6 +17,9 @@ For the syntax highlighting to be applied, ensure that your callgrind profiling 
 - **Plain Text Viewing:**  
   Load and display text files with a simple, responsive interface.
 
+- **Line Numbering:**  
+  A dedicated margin displays dynamic line numbers to help navigate through large files.
+
 - **Callgrind Syntax Highlighting:**  
   The viewer automatically detects and highlights Callgrind-specific tokens, making it easier to analyze profiling output. Key highlights include:
   - **Header Tokens:**  
