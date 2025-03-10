@@ -48,3 +48,6 @@ For the syntax highlighting to be applied, ensure that your callgrind profiling 
 ### Requirements
 - Qt 6.8.2 (or a compatible version)
 - A C++ compiler that supports C++11 or later
+
+### Acknowledgements
+This repository is created as a assignment for **Dr. Pavel Saviankou**
