@@ -2,7 +2,7 @@
 version: 1
 creator: MyProfileGenerator v1.0
 cmd: ./myapp --test
-desc: Complex profile test file with comprehensive callgrind outputs
+desc: Sample profile test file
 events: Cycles Instructions Flops
 positions: instr line
 summary: 5000 4000 2000

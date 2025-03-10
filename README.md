@@ -18,10 +18,29 @@ For the syntax highlighting to be applied, ensure that your callgrind profiling 
   Load and display text files with a simple, responsive interface.
 
 - **Callgrind Syntax Highlighting:**  
-  Improves the visualization of Callgrind profiling output by applying color-based highlighting to key tokens:
-  - **File Name Lines (`fl=`):** Highlighted in blue.
-  - **Function Name Lines (`fn=`):** Highlighted in dark green.
-  - **Numeric Cost Values:** Lines beginning with numeric values are highlighted in red.
+  The viewer automatically detects and highlights Callgrind-specific tokens, making it easier to analyze profiling output. Key highlights include:
+  - **Header Tokens:**  
+    - `desc:` – Description of the output.
+    - `cmd:` – The command that was run.
+    - `part:` – Partition or block number.
+    - `events:` – A list of recorded events (e.g., `Ir I1 Dr Dw`).
+    - `summary:` – Overall summary of costs.
+  - **File and Function Identifiers:**  
+    - `fl=` – File names.
+    - `fn=` – Function names.
+    - `cfl=` – Caller file names.
+    - `cfn=` – Caller function names.
+    - `cfi=` – Caller file information (with file and line details).
+    - `calls=` – Call count information.
+  - **Cost Lines:**  
+    Numeric lines are highlighted with red support various formats:
+    - Plain decimal numbers (e.g., `10 60 300 30`).
+    - Compressed tokens (e.g., `3*1` indicating a repeated value).
+    - Hexadecimal addresses (e.g., `0x40010020`).
+    - Signed numbers (e.g., `+0x10`, `-0`).
+    
+  - **Comments:**  
+    Comments are rendered in gray and italicized.
 
 ### Requirements
 - Qt 6.8.2 (or a compatible version)

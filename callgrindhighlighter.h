@@ -4,6 +4,7 @@
 #include <QSyntaxHighlighter>
 #include <QRegularExpression>
 #include <QTextCharFormat>
+#include <QVector>
 
 class CallgrindHighlighter : public QSyntaxHighlighter
 {
@@ -20,9 +21,27 @@ private:
         QTextCharFormat format;
     };
     QVector<HighlightingRule> highlightingRules;
-    QTextCharFormat fileFormat;
-    QTextCharFormat functionFormat;
+
+    // Formats for header tokens:
+    QTextCharFormat descFormat;     // desc:
+    QTextCharFormat cmdFormat;      // cmd:
+    QTextCharFormat partFormat;     // part:
+    QTextCharFormat eventsFormat;   // events:
+    QTextCharFormat summaryFormat;  // summary:
+
+    // Formats for file and function tokens:
+    QTextCharFormat fileFormat;     // fl=
+    QTextCharFormat functionFormat; // fn=
+    QTextCharFormat cflFormat;      // cfl=
+    QTextCharFormat cfnFormat;      // cfn=
+    QTextCharFormat cfiFormat;      // cfi=
+    QTextCharFormat callsFormat;    // calls=
+
+    // Format for numeric cost lines:
     QTextCharFormat costFormat;
+
+    // Format for comment lines:
+    QTextCharFormat commentFormat;
 };
 
 #endif // CALLGRINDHIGHLIGHTER_H
