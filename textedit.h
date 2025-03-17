@@ -3,8 +3,10 @@
 
 #include <QPlainTextEdit>
 #include <QUrl>
+#include <QHash>
 
 class LineNumberHelper;
+class FoldOverlay;
 
 class TextEdit : public QPlainTextEdit {
     Q_OBJECT
@@ -25,12 +27,16 @@ public slots:
     void updateLineNumberAreaWidth(int newBlockCount);
     void updateLineNumberArea(const QRect &rect, int dy);
     void lineNumberAreaPaintEvent(QPaintEvent *event);
+    void toggleFoldAtBlock(int blockNumber);
 
 private:
     QUrl srcUrl;
     QWidget *lineNumberArea;
 
-    // LineNumberHelper access to protected members
+    // hash to store fold overlays for each header block, keyed by header block position.
+    QHash<qint64, FoldOverlay*> foldOverlays;
+
+    // LineNumberHelper access to protected members.
     friend class LineNumberHelper;
 };
 

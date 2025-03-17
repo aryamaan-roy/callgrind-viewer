@@ -20,6 +20,13 @@ For the syntax highlighting to be applied, ensure that your callgrind profiling 
 - **Line Numbering:**  
   A dedicated margin displays dynamic line numbers to help navigate through large files.
 
+- **Code Folding:**
+
+ Foldable regions (determined by function headers starting with `fn=`) can be collapsed by clicking on the arrow in the line number margin. When collapsed, a placeholder overlay is displayed over the folded region with a message indicating the number of lines folded.
+
+  *Click the arrow (▼) to fold a region and reveal a right arrow (►) in its place. Click the overlay to unfold the region.*
+
+
 - **Callgrind Syntax Highlighting:**  
   The viewer automatically detects and highlights Callgrind-specific tokens, making it easier to analyze profiling output. Key highlights include:
   - **Header Tokens:**  
