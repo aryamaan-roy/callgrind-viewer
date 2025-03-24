@@ -1,39 +1,54 @@
 // Copyright (C) 2017 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
+#include "mainwindow.h"
 #include "assistant.h"
 #include "findfiledialog.h"
-#include "mainwindow.h"
 #include "textedit.h"
-
 #include <QAction>
 #include <QApplication>
 #include <QLibraryInfo>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
+#include <QToolBar>
+#include <QLineEdit>
 
 using namespace Qt::StringLiterals;
 
-// ![0]
 MainWindow::MainWindow()
     : textViewer(new TextEdit)
     , assistant(new Assistant)
 {
-    // ![0]
     textViewer->setContents(QLibraryInfo::path(QLibraryInfo::ExamplesPath)
                             + "/assistant/callgrindviewer/documentation/intro.html"_L1);
     setCentralWidget(textViewer);
 
     createActions();
     createMenus();
+    createSearchBar();  // added search toolbar
 
     setWindowTitle(tr("Call Grind Viewer"));
     resize(750, 400);
 
     connect(textViewer, &TextEdit::fileNameChanged, this, &MainWindow::updateWindowTitle);
-    // ![1]
 }
+
+void MainWindow::createSearchBar() {
+    QToolBar *searchToolBar = addToolBar(tr("Search"));
+    searchLineEdit = new QLineEdit(this);
+    searchLineEdit->setPlaceholderText(tr("Find..."));
+    searchToolBar->addWidget(searchLineEdit);
+    connect(searchLineEdit, &QLineEdit::textChanged, this, &MainWindow::searchTextChanged);
+}
+
+void MainWindow::searchTextChanged(const QString &text) {
+    if (textViewer)
+        textViewer->findText(text);
+}
+
+// ... (the rest of your existing MainWindow code remains unchanged)
+
 //! [1]
 
 //! [2]

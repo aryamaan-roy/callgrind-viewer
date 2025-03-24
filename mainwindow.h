@@ -5,6 +5,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLineEdit>
 
 QT_BEGIN_NAMESPACE
 class QAction;
@@ -26,6 +27,7 @@ private slots:
     void about();
     void showDocumentation();
     void open();
+    void searchTextChanged(const QString &text);
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -33,6 +35,7 @@ protected:
 private:
     void createActions();
     void createMenus();
+    void createSearchBar();
 
     TextEdit *textViewer;
     Assistant *assistant;
@@ -46,6 +49,8 @@ private:
     QAction *exitAct;
     QAction *aboutAct;
     QAction *aboutQtAct;
+
+    QLineEdit *searchLineEdit;
 };
 
 #endif

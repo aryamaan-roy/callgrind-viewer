@@ -22,9 +22,13 @@ For the syntax highlighting to be applied, ensure that your callgrind profiling 
 
 - **Code Folding:**
 
- Foldable regions (determined by function headers starting with `fn=`) can be collapsed by clicking on the arrow in the line number margin. When collapsed, a placeholder overlay is displayed over the folded region with a message indicating the number of lines folded.
+  Foldable regions (determined by function headers starting with `fn=`) can be collapsed by clicking on the arrow in the line number margin. When collapsed, a placeholder overlay is displayed over the folded region with a message indicating the number of lines folded.
 
-  *Click the arrow (▼) to fold a region and reveal a right arrow (►) in its place. Click the overlay to unfold the region.*
+    *Click the arrow (▼) to fold a region and reveal a right arrow (►) in its place. Click the overlay to unfold the region.*
+
+- **Search Functionality**
+
+  A search textbox is available in the toolbar, allowing you to enter a search pattern (with support for regular expressions and case-insensitive matching). All matching occurrences within the document are highlighted with a yellow background, making it easy to quickly locate and analyze specific portions of the profiling data.
 
 
 - **Callgrind Syntax Highlighting:**  

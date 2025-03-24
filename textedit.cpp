@@ -12,6 +12,12 @@
 #include <QTextBlock>
 #include <QTextCursor>
 #include <QDebug>
+#include <QRegularExpression>
+#include <QRegularExpressionMatchIterator>
+#include <QTextCursor>
+#include <QTextCharFormat>
+#include <QTextEdit>
+
 
 TextEdit::TextEdit(QWidget *parent)
     : QPlainTextEdit(parent)
@@ -203,4 +209,29 @@ void TextEdit::toggleFoldAtBlock(int blockNumber) {
             viewport()->update();
         }
     });
+}
+
+
+void TextEdit::findText(const QString &pattern) {
+
+    QList<QTextEdit::ExtraSelection> extraSelections;
+    if (!pattern.isEmpty()) {
+        QTextDocument *doc = this->document();
+        QRegularExpression regex(pattern, QRegularExpression::CaseInsensitiveOption);
+        QString text = doc->toPlainText();
+        QRegularExpressionMatchIterator i = regex.globalMatch(text);
+        while (i.hasNext()) {
+            QRegularExpressionMatch match = i.next();
+            int start = match.capturedStart();
+            int length = match.capturedLength();
+            QTextCursor cursor(doc);
+            cursor.setPosition(start);
+            cursor.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor, length);
+            QTextEdit::ExtraSelection selection;
+            selection.cursor = cursor;
+            selection.format.setBackground(Qt::yellow); // highlight color
+            extraSelections.append(selection);
+        }
+    }
+    this->setExtraSelections(extraSelections);
 }

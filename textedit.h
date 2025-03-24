@@ -28,6 +28,7 @@ public slots:
     void updateLineNumberArea(const QRect &rect, int dy);
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     void toggleFoldAtBlock(int blockNumber);
+    void findText(const QString &pattern);
 
 private:
     QUrl srcUrl;
